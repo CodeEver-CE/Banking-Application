@@ -44,10 +44,75 @@
                 Console.WriteLine("Plese select your option");
                 int option = Convert.ToInt32(Console.ReadLine());
 
+                
 
                 if (option > 0 && option < 6)
                 {
-                    if (option == 1)
+
+                    switch (option)
+                    {
+                        case 1:
+                            Console.WriteLine("====== Account Details ======");
+                            Console.WriteLine($"User: {user}");
+                            Console.WriteLine($"Account: {accountNumber}");
+                            Console.WriteLine($"Balance: {balance}");
+                            Console.WriteLine("------------------------------");
+                            break;
+
+                        case 2:
+                            Console.WriteLine("Check Balance");
+                            Console.WriteLine($"Current Balance: {balance}");
+                            break;
+
+                        case 3:
+                            Console.WriteLine("Deposit");
+
+                            Console.WriteLine("Enter your deposit amount please:");
+                            decimal deposit = Convert.ToDecimal(Console.ReadLine());
+
+                            if (deposit > 0)
+                            {
+                                balance = balance + deposit;
+
+                                Console.WriteLine("Deposit is successful");
+                                Console.WriteLine($"Now balance is: {balance}");
+                            }
+                            else
+                            {
+                                Console.WriteLine("Your deposit amount is wrong");
+                            }
+                            break;
+
+                        case 4:
+                            Console.WriteLine("Withdraw");
+
+                            Console.WriteLine("Enter the withdraw amount please:");
+                            decimal withdraw = Convert.ToDecimal(Console.ReadLine());
+
+                            if (withdraw > 0)
+                            {
+                                balance = balance - withdraw;
+
+                                Console.WriteLine("Withdraw successful");
+                                Console.WriteLine($"Now balance is: {balance}");
+                            }
+                            else
+                            {
+                                Console.WriteLine("Invalid amount!");
+                            }
+                            break;
+
+                        case 5:
+                            Console.WriteLine("Exit");
+                            Console.Clear();
+                            break;
+
+                        default:
+                            Console.WriteLine("Invalid option!");
+                            break;
+                    }
+                    /*
+                     * if (option == 1)
                     {
                         Console.WriteLine("======Account Details========");
                         Console.WriteLine($"user: {user}\naccount: {accountNumber}\nbalance: {balance}\n");
@@ -101,6 +166,7 @@
                         Console.WriteLine("Exit");
                         Console.Clear();
                     }
+                    */
 
                 }
                 else
