@@ -60,6 +60,11 @@
                 }
                 else if (option == 5)
                 {
+                    // Withdraw
+                    ShowTransactions(account);
+                }
+                else if (option == 6)
+                {
                     Console.WriteLine("Thank you for using AA Bank");
                     break;
                 }
@@ -72,7 +77,7 @@
             }
         }
 
-        // Part 10 - Welcome Message Method
+        // Welcome Message Method
         static void WelcomeMessage()
         {
             Console.WriteLine("--------------------");
@@ -82,7 +87,7 @@
             Console.WriteLine("--------------------");
         }
 
-        // Part 10 - Menu Method
+        // Menu Method
         static void ShowMenu()
         {
             Console.WriteLine("====== BANK MENU ======");
@@ -90,11 +95,12 @@
             Console.WriteLine("2. Check Balance");
             Console.WriteLine("3. Deposit");
             Console.WriteLine("4. Withdraw");
-            Console.WriteLine("5. Exit");
+            Console.WriteLine("5. Transaction History");
+            Console.WriteLine("6. Exit");
             Console.WriteLine("========================");
         }
 
-        // Part 10 - Account Details Method
+        // Account Details Method
         static void ShowAccountDetails(Account account)
         {
             Console.WriteLine("====== Account Details ======");
@@ -104,7 +110,7 @@
             Console.WriteLine("=============================");
         }
 
-        // Part 10 - Deposit Logic Method
+        // Deposit Logic Method
         static void DepositMoney(Account account)
         {
             Console.WriteLine("Enter deposit amount:");
@@ -113,7 +119,7 @@
             account.Deposit(amount);
         }
 
-        // Part 10 - Withdraw Logic Method
+        //  Withdraw Logic Method
         static void WithdrawMoney(Account account)
         {
             Console.WriteLine("Enter withdraw amount:");
@@ -130,6 +136,28 @@
             {
                 Console.WriteLine("Insufficient balance or invalid amount");
             }
+        }
+
+        //Transaction Method
+
+        static void ShowTransactions(Account account)
+        {
+            Console.WriteLine("========Transaction Histroy========");
+
+            if (account.Transactions.Count == 0)
+            {
+                Console.WriteLine("No transactions");
+
+
+            }
+            else
+            {
+                foreach (string transaction in account.Transactions)
+                {
+                    Console.WriteLine(transaction);
+                }
+            }
+            Console.WriteLine("====================================");
         }
     }    
 

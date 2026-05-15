@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Transactions;
 
 namespace Banking_Application
 {
@@ -11,6 +12,10 @@ namespace Banking_Application
         // Properties
         public string AccountHolder { get; set; }
         public int AccountNumber { get; set; }
+
+        //Add Transactions
+
+        public List<string> Transactions { get; set; }
 
         // Protected Balance
         public decimal Balance { get; private set; }
@@ -21,14 +26,17 @@ namespace Banking_Application
             AccountHolder = accountHolder;
             AccountNumber = accountNumber;
             Balance = balance;
+            Transactions = new List<string>();
         }
 
-        // Part 12 - Deposit Method
+        //  Deposit Method
         public void Deposit(decimal amount)
         {
             if (amount > 0)
             {
                 Balance += amount;
+
+                Transactions.Add($"Deposite: {amount}");
                 Console.WriteLine("Deposit successful");
                 Console.WriteLine($"Current Balance: {Balance}");
             }
@@ -38,12 +46,14 @@ namespace Banking_Application
             }
         }
 
-        // Part 12 - Withdraw Method
+        //  Withdraw Method
         public bool Withdraw(decimal amount)
         {
             if (amount > 0 && amount <= Balance)
             {
                 Balance -= amount;
+
+                Transactions.Add($"Withdraw: {amount}");
                 return true;
             }
             
